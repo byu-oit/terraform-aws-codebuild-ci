@@ -21,9 +21,9 @@ module "terraform-aws-codebuild-ci" {
 | Name | Type  | Description | Default |
 | --- | --- | --- | --- |
 |name | string | Name of CI| |
-|buildspec | string| The name of the buildspec file or the buildspec string | cb-buildspec.yml |
 |role_permissions_boundary_arn |string | | |
 |github_repo | string | Full Github repo name | |
+|buildspec | string| The name of the buildspec file or the buildspec string | cb-buildspec.yml |
 |build_env_variables | map(string)| | {}|
 |tags | map(string)| |{} |
 
