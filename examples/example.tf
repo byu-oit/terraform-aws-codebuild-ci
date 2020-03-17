@@ -8,27 +8,7 @@ module "acs" {
 }
 
 module "github_ci" {
-  //  source = "github.com/byu-oit/terraform-aws-<module_name>?ref=v1.0.0"
-  source                 = "../" # for local testing during module development
+  source = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.1"
   name                   = "testci2"
-  github_repo            = "https://github.com/byu-oit/parking-v2"
+  github_repo            = "https://github.com/byu-oit/fake"
   role_permissions_boundary_arn    = module.acs.role_permissions_boundary.arn
-  buildspec              = <<EOT
----
-version: 0.2
-
-phases:
-  install:
-    runtime-versions:
-      java: openjdk11
-      docker: 18
-      nodejs: 10
-  build:
-    commands:
-      - echo 'hi'
-cache:
-  paths:
-    - '/root/cache/**/*'
-
-  EOT
-}
