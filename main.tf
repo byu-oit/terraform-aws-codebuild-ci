@@ -20,10 +20,10 @@ resource "aws_s3_bucket" "ci_cache" {
   tags = var.tags
 
   lifecycle_rule {
-    enabled = true
+    enabled                                = true
     abort_incomplete_multipart_upload_days = 10
-    id = "AutoAbortFailedMultipartUpload"
-    tags = var.tags
+    id                                     = "AutoAbortFailedMultipartUpload"
+    tags                                   = var.tags
   }
 }
 
@@ -88,7 +88,7 @@ resource "aws_iam_role_policy_attachment" "custom" {
 
 
 resource "aws_iam_role" "ci_codebuild_role" {
-  name                 = "${var.name}-ci-role"
+  name = "${var.name}-ci-role"
   //TODO: Discuss the need to maybe not have a permission boundary always?
   permissions_boundary = var.role_permissions_boundary_arn
   assume_role_policy   = <<EOT
@@ -105,7 +105,7 @@ resource "aws_iam_role" "ci_codebuild_role" {
   ]
 }
 EOT
-  tags = var.tags
+  tags                 = var.tags
 }
 
 resource "aws_codebuild_project" "ci-codebuild-project" {
@@ -160,8 +160,6 @@ resource "aws_codebuild_project" "ci-codebuild-project" {
 
   tags = var.tags
 }
-
-
 
 /*
 Note: The secret attribute is only set on resource creation,
