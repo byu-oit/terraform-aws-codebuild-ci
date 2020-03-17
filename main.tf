@@ -27,8 +27,6 @@ resource "aws_s3_bucket" "ci_cache" {
   }
 }
 
-
-//TODO: CUSTOM-APPS-DEV account has the arn:aws:iam::022977965152:role/byu-apps-custom-codebuild
 //TODO: Fix this policy
 //TODO: Give access to all parameters? Pass in list?
 resource "aws_iam_policy" "cbsetup-policy" {
