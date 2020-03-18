@@ -22,6 +22,35 @@ variable "tags" {
 }
 
 variable "role_permissions_boundary_arn" {
-  type = string
+  type    = string
   default = null
+}
+
+variable "source_version" {
+  type = string
+}
+
+variable "webhook_filters" {
+  type = list(object({
+    type                    = string,
+    pattern                 = string,
+    exclude_matched_pattern = bool
+  }))
+  default = [
+    {
+      type                    = "EVENT",
+      pattern                 = "PULL_REQUEST_CREATED"
+      exclude_matched_pattern = false
+    },
+    {
+      type                    = "EVENT",
+      pattern                 = "PULL_REQUEST_UPDATED"
+      exclude_matched_pattern = false
+    },
+    {
+      type                    = "EVENT",
+      pattern                 = "PULL_REQUEST_REOPENED"
+      exclude_matched_pattern = false
+    }
+  ]
 }

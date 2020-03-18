@@ -6,11 +6,12 @@ Build Codebuild CI for Github
 ## Usage
 ```hcl
 module "terraform-aws-codebuild-ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.1"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.2"
   name                          = "ci-name"
   github_repo                   = "https://github.com/byu-oit/fakerepo"
   role_permissions_boundary_arn = module.acs.role_permissions_boundary.arn
   buildspec                     = "cb-buildspec.yml"
+  source_version                = "master"
 }
 ```
 

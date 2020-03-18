@@ -156,6 +156,8 @@ resource "aws_codebuild_project" "ci-codebuild-project" {
     }
   }
 
+  source_version = var.source_version
+
   tags = var.tags
 }
 
@@ -165,15 +167,18 @@ so if the secret is manually rotated, terraform will not pick up the
  change on subsequent runs. In that case, the webhook resource should
   be tainted and re-created to get the secret back in sync.
 */
-//#TODO: Configurable events?
+
 //Note That if we ever go to github enterprise this setup will have to change
 resource "aws_codebuild_webhook" "webhook_configuration" {
   project_name = aws_codebuild_project.ci-codebuild-project.name
   filter_group {
-    //TODO: Obviously need more events
-    filter {
-      type    = "EVENT"
-      pattern = "PULL_REQUEST_CREATED"
+    dynamic "filter" {
+      for_each = var.webhook_filters
+      content {
+        type                    = filter["type"]
+        pattern                 = filter["pattern"]
+        exclude_matched_pattern = filter["exclude_matched_pattern"]
+      }
     }
   }
 }
