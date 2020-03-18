@@ -168,16 +168,21 @@ so if the secret is manually rotated, terraform will not pick up the
   be tainted and re-created to get the secret back in sync.
 */
 
+
+
 //Note That if we ever go to github enterprise this setup will have to change
 resource "aws_codebuild_webhook" "webhook_configuration" {
   project_name = aws_codebuild_project.ci-codebuild-project.name
-  filter_group {
-    dynamic "filter" {
-      for_each = var.webhook_filters
-      content {
-        type                    = filter["type"]
-        pattern                 = filter["pattern"]
-        exclude_matched_pattern = filter["exclude_matched_pattern"]
+  dynamic "filter_group" {
+    for_each = length(var.webhook_filters) > 0 ? [1] : []
+    content {
+      dynamic "filter" {
+        for_each = var.webhook_filters
+        content {
+          type                    = filter.value["type"]
+          pattern                 = filter.value["pattern"]
+          exclude_matched_pattern = filter.value["exclude_matched_pattern"]
+        }
       }
     }
   }

@@ -32,23 +32,23 @@ variable "source_version" {
 
 variable "webhook_filters" {
   type = list(object({
-    type                    = string,
-    pattern                 = string,
+    type                    = string
+    pattern                 = string
     exclude_matched_pattern = bool
   }))
   default = [
     {
-      type                    = "EVENT",
+      type                    = "EVENT"
       pattern                 = "PULL_REQUEST_CREATED"
       exclude_matched_pattern = false
     },
     {
-      type                    = "EVENT",
+      type                    = "EVENT"
       pattern                 = "PULL_REQUEST_UPDATED"
       exclude_matched_pattern = false
     },
     {
-      type                    = "EVENT",
+      type                    = "EVENT"
       pattern                 = "PULL_REQUEST_REOPENED"
       exclude_matched_pattern = false
     }

@@ -8,7 +8,8 @@ module "acs" {
 }
 
 module "github_ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.2"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.3"
+//  source = "../"
   name                          = "testci2"
   github_repo                   = "https://github.com/byu-oit/fake"
   role_permissions_boundary_arn = module.acs.role_permissions_boundary.arn
