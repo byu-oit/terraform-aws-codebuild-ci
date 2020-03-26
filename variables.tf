@@ -4,7 +4,7 @@ variable "github_repo" {
 
 variable "buildspec" {
   type    = string
-  default = "cb-buildspec.yml" //TODO: Do we want a standard?
+  default = "cb-buildspec.yml"
 }
 
 variable "name" {
@@ -39,17 +39,7 @@ variable "webhook_filters" {
   default = [
     {
       type                    = "EVENT"
-      pattern                 = "PULL_REQUEST_CREATED"
-      exclude_matched_pattern = false
-    },
-    {
-      type                    = "EVENT"
-      pattern                 = "PULL_REQUEST_UPDATED"
-      exclude_matched_pattern = false
-    },
-    {
-      type                    = "EVENT"
-      pattern                 = "PULL_REQUEST_REOPENED"
+      pattern                 = "PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED, PULL_REQUEST_REOPENED"
       exclude_matched_pattern = false
     }
   ]
