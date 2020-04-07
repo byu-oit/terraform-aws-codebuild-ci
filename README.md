@@ -19,6 +19,7 @@ module "terraform-aws-codebuild-ci" {
 ## Requirements
 
 * Terraform version 0.12.16 or greater
+* AWS provider version 2.42 or greater
 
 ## Inputs
 
