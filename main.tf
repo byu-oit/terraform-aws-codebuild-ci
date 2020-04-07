@@ -131,10 +131,6 @@ resource "aws_codebuild_project" "ci-codebuild-project" {
     type      = "GITHUB"
     buildspec = var.buildspec
     location  = var.github_repo
-    //TODO: Submodules?
-    git_submodules_config {
-      fetch_submodules = true
-    }
     git_clone_depth     = 1
     report_build_status = true
     insecure_ssl        = false
