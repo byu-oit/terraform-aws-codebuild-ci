@@ -23,7 +23,6 @@ resource "aws_s3_bucket" "ci_cache" {
     enabled                                = true
     abort_incomplete_multipart_upload_days = 10
     id                                     = "AutoAbortFailedMultipartUpload"
-    tags                                   = var.tags
   }
 }
 
