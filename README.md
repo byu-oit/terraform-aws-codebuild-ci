@@ -8,7 +8,7 @@ Build Codebuild CI for Github
 
 ```hcl
 module "terraform-aws-codebuild-ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.5"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.6"
   name                          = "ci-name"
   github_repo                   = "https://github.com/byu-oit/fakerepo"
   role_permissions_boundary_arn = module.acs.role_permissions_boundary.arn
