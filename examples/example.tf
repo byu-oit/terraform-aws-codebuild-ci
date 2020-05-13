@@ -4,11 +4,11 @@ provider "aws" {
 }
 
 module "acs" {
-  source = "github.com/byu-oit/terraform-aws-acs-info?ref=v2.0.0"
+  source = "github.com/byu-oit/terraform-aws-acs-info?ref=v2.1.0"
 }
 
 module "github_ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.6"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.0"
 //  source = "../"
   name                          = "testci2"
   github_repo                   = "https://github.com/byu-oit/fake"
