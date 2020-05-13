@@ -2,13 +2,14 @@
 
 # Terraform AWS Codebuild CI for Github
 
-Build Codebuild CI for Github
+Creates a CodeBuild project for continuous integration on a specified GitHub repository. The CodeBuild project runs 
+when a pull request is made to be merged into a target branch in a repository.
 
 ## Usage
 
 ```hcl
 module "terraform-aws-codebuild-ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v0.0.6"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.0"
   name                          = "ci-name"
   github_repo                   = "https://github.com/byu-oit/fakerepo"
   role_permissions_boundary_arn = module.acs.role_permissions_boundary.arn
