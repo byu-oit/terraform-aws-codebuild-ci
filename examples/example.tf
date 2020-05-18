@@ -8,7 +8,7 @@ module "acs" {
 }
 
 module "github_ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.0"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.1"
 //  source = "../"
   name                          = "testci2"
   github_repo                   = "https://github.com/byu-oit/fake"

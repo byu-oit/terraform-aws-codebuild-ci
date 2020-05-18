@@ -17,7 +17,8 @@ resource "aws_s3_bucket" "ci_cache" {
       }
     }
   }
-  tags = var.tags
+  tags          = var.tags
+  force_destroy = true
 
   lifecycle_rule {
     enabled                                = true
@@ -128,9 +129,9 @@ resource "aws_codebuild_project" "ci-codebuild-project" {
   service_role = aws_iam_role.ci_codebuild_role.arn
 
   source {
-    type      = "GITHUB"
-    buildspec = var.buildspec
-    location  = var.github_repo
+    type                = "GITHUB"
+    buildspec           = var.buildspec
+    location            = var.github_repo
     git_clone_depth     = 1
     report_build_status = true
     insecure_ssl        = false
