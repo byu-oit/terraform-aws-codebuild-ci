@@ -9,7 +9,7 @@ when a pull request is made to be merged into a target branch in a repository.
 
 ```hcl
 module "terraform-aws-codebuild-ci" {
-  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.0"
+  source                        = "github.com/byu-oit/terraform-aws-codebuild-ci?ref=v1.0.1"
   name                          = "ci-name"
   github_repo                   = "https://github.com/byu-oit/fakerepo"
   role_permissions_boundary_arn = module.acs.role_permissions_boundary.arn
